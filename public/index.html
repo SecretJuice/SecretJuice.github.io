@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Universal Cake;</title>
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- import the webpage's javascript file -->
+    <script src="./script.js" defer></script>
+    
+  </head>  
+  <body>
+    <h1>Welcome to Universal Cake 🍰</h1>
+    
+    <p>
+        Your purpose is to obtain CAKE.
+    </p>
+    <p id = "cakeElement">
+       Cake: 0
+    </p>
+    <p id = "cakePerClickElement">
+        Cake per Click (C/C): 1
+    </p>
+
+    <button type = "button" style = "padding: 10px; margin: 0px 0px 10px 0px; border-radius: 5px; border: none;", onclick="obtainCake()">Click For CAKE</button>
+
+    <div id = "upgradeButtons", class="grid-container"></div>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
