@@ -5,6 +5,7 @@ let perClickElement = document.getElementById('cakePerClickElement');
 let upgradeGrid = document.getElementById("upgradeButtons");
 
 let localStorageKey = "UniversalCakeGame";
+let saveDataInterval = 2 * 60 * 1000;
 
 var cake = 0n;
 var cakePerClick = 1n;
@@ -52,8 +53,14 @@ let numberFormatArray = [million, billion, trillion, quadrillion, quintillion, s
                         quattourvigintillion, quinvigintillion, hexvigintillion, septenvigintillion, septenvigintillion,
                         octvigintillion, novemvigintillion, trigintillion, untrigintillion, doutrigintillion, googol];
 
+loadUserData();
+
 counterElement.innerText = "Cake: " + formatNumber(cake, 3);
 perClickElement.innerText = "Cake per Click: (C/C): " + formatNumber(cakePerClick, 3);
+
+window.onbeforeunload = saveUserData;
+
+window.addEventListener("beforeunload", saveUserData, false);
 
 function saveUserData() {
 
@@ -65,7 +72,24 @@ function saveUserData() {
 
     localStorage.setItem(localStorageKey, dataString);
 
+    console.log("Saving user data locally...");
+
 }
+
+function loadUserData() {
+
+    console.log("Loading user data...");
+
+    let userScoreData = JSON.parse(localStorage.getItem(localStorageKey));
+
+    cake = BigInt(userScoreData.cake);
+    cakePerClick = BigInt(userScoreData.cakePerClick);
+
+}
+
+
+
+setInterval(saveUserData, saveDataInterval);
 
 function stickScroll() {
 
@@ -209,6 +233,6 @@ for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
     upgradeGrid.appendChild(upgradeButtonElement);
 }
 
-
-
 buttonList[0].style.display = "grid";
+
+checkForLiveButtons();
