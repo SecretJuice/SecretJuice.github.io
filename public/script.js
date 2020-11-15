@@ -4,6 +4,8 @@ let counterElement = document.getElementById('cakeElement');
 let perClickElement = document.getElementById('cakePerClickElement');
 let upgradeGrid = document.getElementById("upgradeButtons");
 
+let localStorageKey = "UniversalCakeGame";
+
 var cake = 0n;
 var cakePerClick = 1n;
 var buttonCount = 102;
@@ -53,7 +55,17 @@ let numberFormatArray = [million, billion, trillion, quadrillion, quintillion, s
 counterElement.innerText = "Cake: " + formatNumber(cake, 3);
 perClickElement.innerText = "Cake per Click: (C/C): " + formatNumber(cakePerClick, 3);
 
+function saveUserData() {
 
+    let userScoreData = {
+        "cake":cake.toString(),
+        "cakePerClick":cakePerClick.toString()};
+
+    let dataString = JSON.stringify(userScoreData);
+
+    localStorage.setItem(localStorageKey, dataString);
+
+}
 
 function stickScroll() {
 
