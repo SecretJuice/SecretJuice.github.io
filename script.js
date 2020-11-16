@@ -82,8 +82,12 @@ function loadUserData() {
 
     let userScoreData = JSON.parse(localStorage.getItem(localStorageKey));
 
-    cake = BigInt(userScoreData.cake);
-    cakePerClick = BigInt(userScoreData.cakePerClick);
+    if (userScoreData != null){
+
+        cake = BigInt(userScoreData.cake);
+        cakePerClick = BigInt(userScoreData.cakePerClick);
+
+    }
 
 }
 
